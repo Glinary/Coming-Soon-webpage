@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Laija is coming soon</title>
+</head>
+<body class="background">
+
+    <div class="two-column-container">
+        <img class="image" src="product.jpg" alt="Aroma Bracelet" >
+
+        <div class="right-side-container">
+            <div class="headline"><h1>It's time to<br>Style With<br>Purpose.</h1></div>
+            <div class="caption"><h3>Be the first to know when our online<br>orders open!</h3></div>
+            <form class="form-container" onsubmit="event.preventDefault(); submitForm(event);">
+                <input class="form-inputs" type="text" id="name" name="name" placeholder="enter your name">
+                <input class="form-inputs" type="text" id="email" name="email" placeholder="enter your email">
+                <button class="form-button" type="submit">SIGN UP</button>
+            </form>
+            <div class="feedback" id="successFeedback" style="display: none;"></div>
+            <div class="feedback" id="errorFeedback" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function markAsClicked() {
+            const button = document.querySelector('.form-button');
+            button.classList.add('clicked');
+        }
+
+        function showFeedback(message, feedbackElement) {
+            feedbackElement.innerHTML = message;
+            feedbackElement.style.display = 'block';
+            setTimeout(() => {
+                feedbackElement.innerHTML = '';
+                feedbackElement.style.display = 'none';
+            }, 1000); // Adjust the delay (in milliseconds) as needed
+        }
+
+        function showSuccessFeedback(message) {
+            const successFeedback = document.getElementById('successFeedback');
+            showFeedback(message, successFeedback);
+        }
+
+        function showErrorFeedback(message) {
+            const errorFeedback = document.getElementById('errorFeedback');
+            showFeedback(message, errorFeedback);
+        }
+
+        function submitForm(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const name = document.getElementById('name').value;
+
+            if (!validateEmail(email)) {
+                showErrorFeedback('Please enter a valid email address.');
+                return;
+            }
+
+            fetch("/api/storeEmail", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    name: name,
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.message === 'storeEmail()') {
+                    showSuccessFeedback('Email sent successfully!');
+                } else {
+                    showErrorFeedback('Failed to send email. Please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showErrorFeedback('An error occurred. Please try again later.');
+            });
+        }
+    </script>
+
+</body>
+</html>
