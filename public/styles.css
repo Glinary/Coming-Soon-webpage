@@ -1,3 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@font-face {
+    font-family: 'Juana';
+    src: url('/Juana-Bold.otf') format('truetype');
+}
+
+
 .right-side-container {
     width: 30%;
 }
@@ -17,11 +25,7 @@
         margin: 0;
     }
     
-    .image-container {
-        background-color: red;
-    }
     .image {
-        background-color: brown;
         margin: 0;
         padding: 0;
         height: auto;
@@ -29,7 +33,9 @@
     }
     
     .right-side-container {
-        background: #F4EDDF;
+        /*background: #F4EDDF;*/
+        background-image: red;
+        background-image: url("/leafbg.jpg");
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -39,6 +45,7 @@
     }
     
     .headline {
+        font-family: 'Juana', sans-serif;
         color: #60305B;
         text-align: center;
         margin: 0 2rem 0 2rem;
@@ -46,14 +53,16 @@
     }
     
     .caption {
+        font-family: 'Poppins', sans-serif;
+        font-weight: lighter;
         color: #60305B;
         text-align: center;
-        margin: 0 2rem 0 2rem;
+        margin: 0 1rem 0 1rem;
         padding: 0;
     }
     
     .form-container {
-        background: #F4EDDF;
+        /*background: #F4EDDF;*/
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -62,7 +71,9 @@
     }
     
     .form-inputs {
-        background-color: #F4EDDF;
+        /*background-color: #F4EDDF;*/
+        background: none;
+        font-family: 'Juana', sans-serif;
         border-top: none;
         border-right: none;
         border-left: none;
@@ -70,7 +81,7 @@
         border-color: black;
         flex-direction: column;
         margin: 0.5rem 0;
-        padding: 0 0 2px 0;
+        padding: 0 0 0 0;
     }
     
     .form-inputs::placeholder {
@@ -82,6 +93,7 @@
     }
     
     .form-button {
+        font-family: 'Juana', sans-serif;
         border: none;
         background-color: #B7798E;
         margin: 2rem 0;
@@ -151,6 +163,8 @@
     }
     
     .caption {
+        font-family: 'Poppins', sans-serif;
+        font-weight: lighter;
         margin: 0;
         padding: 0;
     }
