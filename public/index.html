@@ -33,6 +33,7 @@
 
         function markAsClicked() {
             const button = document.querySelector('.form-button');
+            button.style.backgroundColor = '#B7798E'; //Set the original background color
             button.classList.add('clicked');
         }
 
@@ -79,6 +80,7 @@
             .then(data => {
                 console.log(data);
                 if (data.message === 'storeEmail()') {
+                    markAsClicked();
                     showSuccessFeedback('Email sent successfully!');
                 } else {
                     showErrorFeedback('Failed to send email. Please try again.');

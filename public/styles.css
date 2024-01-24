@@ -183,22 +183,6 @@
         padding: 0;
     }
     
-    .mobile-form-button {
-        font-family: 'Juana', sans-serif;
-        border: none;
-        background-color: #B7798E;
-        margin: 2rem 0;
-        padding: 0;
-        height: 2rem;
-        width: 10em;
-        color: #F4EDDF;
-        cursor: pointer;
-    }
-
-    .mobile-form-button:hover {
-        background-color: #60305B; /* Color on hover */
-    }
-
     .feedback {
         margin-top: 0.5rem;
         color: #333;
