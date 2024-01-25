@@ -15,7 +15,7 @@
         <div class="right-side-container">
             <div class="headline"><h1>It's time to<br>Style With<br>Purpose.</h1></div>
             <div class="caption"><h3>Be the first to know when we open for online orders!</h3></div>
-            <form class="form-container" onsubmit="event.preventDefault(); submitForm(event);">
+            <form id="subscription-form" class="form-container" onsubmit="event.preventDefault(); submitForm(event);">
                 <input class="form-inputs" type="text" id="name" name="name" placeholder="enter your name">
                 <input class="form-inputs" type="text" id="email" name="email" placeholder="enter your email">
                 <button class="form-button" type="submit">SIGN UP</button>
@@ -60,6 +60,7 @@
             event.preventDefault();
             const email = document.getElementById('email').value;
             const name = document.getElementById('name').value;
+            const subscriptionform = document.getElementById('subscription-form');
 
             if (!validateEmail(email)) {
                 showErrorFeedback('Please enter a valid email address.');
@@ -90,6 +91,7 @@
                 console.error('Error:', error);
                 showErrorFeedback('An error occurred. Please try again later.');
             });
+            subscriptionform.reset();
         }
     </script>
 
